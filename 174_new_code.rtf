@@ -1,0 +1,87 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2636
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+def new_sort(new_array):\
+	swap = 0\
+	i = temp = 0\
+	n = j = len(new_array)-1\
+	mid = n // 2\
+	\
+	while(i<=j):\
+		#print("i = \{\} and j = \{\}".format(i,j))\
+		if (new_array[i] > new_array[j]):\
+			temp = new_array[i]\
+			new_array[i] = new_array[j]\
+			new_array[j] = temp\
+		i+=1\
+		j-=1\
+		#print("i = \{\} and j = \{\} and arr = \{\}".format(i,j,arr))\
+\
+	for i in range(0,mid+1):\
+		for j in range(i, n-i):\
+			#print("for loop ranging from i = \{\} to n-i = \{\}".format(i,n-i))\
+			if new_array[j] > new_array[j+1]:\
+				temp = new_array[j]\
+				new_array[j] = new_array[j+1]\
+				new_array[j+1] = temp\
+				swap += 1\
+			if new_array[n-j] < new_array[n-j-1]:\
+				temp = new_array[n-j]\
+				new_array[n-j] = new_array[n-j-1]\
+				new_array[n-j-1] = temp\
+				swap+=1\
+			#print("j = \{\} j+1 = \{\} n-j = \{\} n-j-1 = \{\} arr = \{\}".format(j,j+1,n-j,n-j-1,arr))\
+	#print(swap)\
+	\
+	return swap\
+	\
+def merge_array(left_array, right_array, pivot):\
+	m = len(left_array)\
+	n = len(right_array)\
+	\
+	arr = []\
+	for i in range(0,m):\
+		arr.append(left_array[i])\
+	arr.append(pivot)\
+	for i in range(0,n):\
+		arr.append(right_array[i])\
+	\
+	return arr\
+\
+\
+\
+\
+\
+array = [36, 7, 40, 12, 19, 99, 100, 5, 79, 81]\
+\
+n = len(array)\
+h = n//2\
+array_left = []\
+array_right = []\
+swap_left = swap_right = 0\
+a = b = 0\
+pivot = array[0]\
+for i in range(1,n):\
+	if array[i] <= pivot:\
+		array_left.append(array[i])\
+		a += 1\
+	else:\
+		array_right.append(array[i])\
+		b+=1\
+\
+\
+swap_left = new_sort(array_left)\
+swap_right = new_sort(array_right)\
+\
+array = merge_array(array_left, array_right, pivot)\
+print(array_left)\
+print(pivot)\
+print(array_right)\
+print("Swaps = \{\}".format(swap_left+swap_right))\
+print(array)\
+}
