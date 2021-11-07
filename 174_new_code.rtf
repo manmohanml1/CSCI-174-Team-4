@@ -5,7 +5,8 @@
 \margl1440\margr1440\vieww11520\viewh8400\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
-\f0\fs24 \cf0 \
+\f0\fs24 \cf0 from numpy import random\
+\
 def new_sort(new_array):\
 	swap = 0\
 	i = temp = 0\
@@ -57,7 +58,13 @@ def merge_array(left_array, right_array, pivot):\
 \
 \
 \
-array = [36, 7, 40, 12, 19, 99, 100, 5, 79, 81]\
+array = []\
+x=0\
+for i in range(200):\
+        x = random.randint(1,100)\
+        array.append(x)\
+\
+#print(array)\
 \
 n = len(array)\
 h = n//2\
@@ -65,7 +72,8 @@ array_left = []\
 array_right = []\
 swap_left = swap_right = 0\
 a = b = 0\
-pivot = array[0]\
+y = random.randint(0,n)\
+pivot = array[y]\
 for i in range(1,n):\
 	if array[i] <= pivot:\
 		array_left.append(array[i])\
@@ -79,9 +87,9 @@ swap_left = new_sort(array_left)\
 swap_right = new_sort(array_right)\
 \
 array = merge_array(array_left, array_right, pivot)\
-print(array_left)\
-print(pivot)\
-print(array_right)\
-print("Swaps = \{\}".format(swap_left+swap_right))\
+#print(array_left)\
+#print(pivot)\
+#print(array_right)\
 print(array)\
+print("Swaps = \{\}".format(swap_left+swap_right))\
 }
