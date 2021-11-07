@@ -5,14 +5,17 @@
 \margl1440\margr1440\vieww11520\viewh8400\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
-\f0\fs24 \cf0 from numpy import random\
+\f0\fs24 \cf0 # importing random library for generation of numbers\
+from numpy import random\
 \
+# function to sort the array\
 def new_sort(new_array):\
 	swap = 0\
 	i = temp = 0\
 	n = j = len(new_array)-1\
 	mid = n // 2\
 	\
+	# sorting elements with front and end to reduce the swaps later on\
 	while(i<=j):\
 		#print("i = \{\} and j = \{\}".format(i,j))\
 		if (new_array[i] > new_array[j]):\
@@ -22,7 +25,7 @@ def new_sort(new_array):\
 		i+=1\
 		j-=1\
 		#print("i = \{\} and j = \{\} and arr = \{\}".format(i,j,arr))\
-\
+	# generation of split arrays from the big one to sort parallely\
 	for i in range(0,mid+1):\
 		for j in range(i, n-i):\
 			#print("for loop ranging from i = \{\} to n-i = \{\}".format(i,n-i))\
@@ -40,7 +43,8 @@ def new_sort(new_array):\
 	#print(swap)\
 	\
 	return swap\
-	\
+\
+# Merge function to merge the sorted arrays along with the pivot value\
 def merge_array(left_array, right_array, pivot):\
 	m = len(left_array)\
 	n = len(right_array)\
@@ -57,7 +61,7 @@ def merge_array(left_array, right_array, pivot):\
 \
 \
 \
-\
+# driver code to call all the functions and also which generates random values for our array\
 array = []\
 x=0\
 for i in range(200):\
